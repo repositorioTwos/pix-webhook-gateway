@@ -6,9 +6,9 @@
     "dev": "tsx watch src/server.ts",
     "start": "tsx src/server.ts",
     "worker": "tsx src/workers/webhook.processor.worker.ts",
-    "migrate:create": "node-pg-migrate create",
-    "migrate:up": "node-pg-migrate -d $DATABASE_URL -m src/database/migrations up",
-    "migrate:down": "node-pg-migrate -d $DATABASE_URL -m src/database/migrations down"
+    "migrate:up": "node-pg-migrate --migrations-table pgmigrations_webhook up",
+    "migrate:down": "node-pg-migrate --migrations-table pgmigrations_webhook down",
+    "migrate:create": "node-pg-migrate create"
   },
   "keywords": [],
   "author": "",
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/node": "^25.3.0",
+    "@types/pg": "^8.16.0",
     "node-pg-migrate": "^8.0.4",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.3"

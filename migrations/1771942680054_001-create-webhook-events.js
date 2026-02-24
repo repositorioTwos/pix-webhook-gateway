@@ -3,7 +3,7 @@
  */
 export const shorthands = undefined;
 
-exports.up = (pgm) => {
+export const up = (pgm) => {
   pgm.createExtension('pgcrypto', { ifNotExists: true })
 
   pgm.createTable('webhook_events', {
@@ -12,22 +12,10 @@ exports.up = (pgm) => {
       primaryKey: true,
       default: pgm.func('gen_random_uuid()')
     },
-    provider: {
-      type: 'varchar(50)',
-      notNull: true
-    },
-    event_type: {
-      type: 'varchar(100)',
-      notNull: true
-    },
-    external_id: {
-      type: 'varchar(150)',
-      notNull: true
-    },
-    payload: {
-      type: 'jsonb',
-      notNull: true
-    },
+    provider: { type: 'varchar(50)', notNull: true },
+    event_type: { type: 'varchar(100)', notNull: true },
+    external_id: { type: 'varchar(150)', notNull: true },
+    payload: { type: 'jsonb', notNull: true },
     status: {
       type: 'varchar(20)',
       notNull: true,
@@ -38,9 +26,7 @@ exports.up = (pgm) => {
       notNull: true,
       default: 0
     },
-    processed_at: {
-      type: 'timestamp'
-    },
+    processed_at: { type: 'timestamp' },
     created_at: {
       type: 'timestamp',
       notNull: true,
@@ -54,6 +40,6 @@ exports.up = (pgm) => {
   })
 }
 
-exports.down = (pgm) => {
+export const down = (pgm) => {
   pgm.dropTable('webhook_events')
 }

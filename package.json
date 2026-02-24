@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
+    "worker": "tsx src/workers/webhook.processor.worker.ts",
     "migrate:create": "node-pg-migrate create",
     "migrate:up": "node-pg-migrate -d $DATABASE_URL -m src/database/migrations up",
     "migrate:down": "node-pg-migrate -d $DATABASE_URL -m src/database/migrations down"

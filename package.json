@@ -1,10 +1,10 @@
 {
   "name": "fyhub-webhooks",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "dev": "tsx watch src/server.ts",
-    "start": "tsx src/server.ts",
+    "dev": "NODE_ENV=development nodemon src/server.js",
+    "start": "NODE_ENV=production node src/server.js",
     "worker": "tsx src/workers/webhook.processor.worker.ts",
     "migrate:up": "node-pg-migrate --migrations-table pgmigrations_webhook up",
     "migrate:down": "node-pg-migrate --migrations-table pgmigrations_webhook down",
@@ -17,15 +17,15 @@
   "dependencies": {
     "crypto": "^1.0.1",
     "dotenv": "^17.3.1",
+    "express": "^5.2.1",
     "fastify": "^5.7.4",
+    "fastify-raw-body": "^5.0.0",
     "pg": "^8.18.0",
-    "pino": "^10.3.1"
+    "pino": "^10.3.1",
+    "starkinfra": "^0.16.0"
   },
   "devDependencies": {
-    "@types/node": "^25.3.0",
-    "@types/pg": "^8.16.0",
     "node-pg-migrate": "^8.0.4",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.9.3"
+    "nodemon": "^3.1.14"
   }
 }
